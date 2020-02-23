@@ -1,0 +1,48 @@
+<aiml encoding="UTF-8">
+	<category>
+      <pattern>* ARTIFICIAL INTELLIGENCE *</pattern>
+      <!-- <that>SURE WHAT DOMAIN ARE YOU INTERESTED IN</that> -->
+      <template><srai>ARTIFICIAL INTELLIGENCE</srai></template>
+    </category>
+
+    <category>
+      <pattern>ARTIFICIAL INTELLIGENCE *</pattern>
+      <!-- <that>SURE WHAT DOMAIN ARE YOU INTERESTED IN</that> -->
+      <template><srai>ARTIFICIAL INTELLIGENCE</srai></template>
+    </category>
+
+    <category>
+      <pattern>* ARTIFICIAL INTELLIGENCE</pattern>
+      <!-- <that>SURE WHAT DOMAIN ARE YOU INTERESTED IN</that> -->
+      <template><srai>ARTIFICIAL INTELLIGENCE</srai></template>
+    </category>
+
+    <category>
+      <pattern>ARTIFICIAL INTELLIGENCE</pattern>
+      <!-- <that>SURE WHAT DOMAIN ARE YOU INTERESTED IN</that> -->
+      <!-- I think you should try CS 407 course. Also, try learning about ML. Here are some references. -->
+      <template>@goto AI</template>
+    </category>
+
+    <category>
+      <pattern>* AI *</pattern>
+      <template><srai><star index="1"/> ARTIFICIAL INTELLIGENCE <star index="2"/></srai></template>
+    </category>
+
+    <category>
+      <pattern>AI *</pattern>
+      <template><srai>ARTIFICIAL INTELLIGENCE <star index="2"/></srai></template>
+    </category>
+
+    <category>
+      <pattern>* AI</pattern>
+      <template><srai><star index="1"/> ARTIFICIAL INTELLIGENCE</srai></template>
+    </category>
+
+    <category>
+      <pattern>AI</pattern>
+      <template><srai>ARTIFICIAL INTELLIGENCE</srai></template>
+    </category>
+
+    
+</aiml>
