@@ -38,7 +38,7 @@
 	<category>
 		<pattern>* GET A JOB IN *</pattern>
 		<template>
-			<srai><star index="1"/> INTERESTED IN <star index="2"/></srai><think><set name="field"><star index="2"/></set></think>
+			/jobTrends/<star index="2"/><think><set name="field"><star index="2"/></set></think>
 		</template>
 	</category>
 
@@ -47,6 +47,7 @@
 		<template>
 			<condition name="field">
 				<li value="null">What field are you interested in?</li>
+				<li value="">What field are you interested in?</li>
 				<li>/field/<get name="field"/></li>
 			</condition>
 		</template>

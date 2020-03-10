@@ -1,11 +1,28 @@
 import os
 import datetime
 import json
+import sys, glob
+import aiml
+import requests
+import sqlite3
+
+
 from flask import Flask
 from flask import request
+from flask import redirect
+
+
+
 
 
 def create_app(test_config=None):
+
+    kernel = aiml.Kernel()
+    kernel.bootstrap(learnFiles="./flaskr/aiml/botty.aiml")
+    kernel.bootstrap(learnFiles="./flaskr/aiml/courses.aiml")
+    kernel.bootstrap(learnFiles="./flaskr/aiml/profs.aiml")
+
+
     # create and configure the app
     app = Flask(__name__, instance_relative_config=True)
     app.config.from_mapping(
@@ -59,16 +76,27 @@ def create_app(test_config=None):
 
     @app.route('/chat', methods = ['POST'])
     def postChat():
-        c = db.get_db()
-        print(request.form)
-        print(type(request.form))
-        print(type(json.dumps(request.form)))
-        json_obj = json.loads(json.dumps(request.form))
-        print(type(json_obj))
-        print(json_obj['postedBy'])
-        c.execute('INSERT INTO chat VALUES (?,?,?)', (str(datetime.datetime.now()),str(json_obj['postedBy']), str(json_obj['data'])))
         
+        c = db.get_db()
+        json_obj = json.loads(json.dumps(request.form))
+        c.execute('INSERT INTO chat VALUES (?,?,?)', (str(datetime.datetime.now()),json_obj['postedBy'], json_obj['data']))
+        
+
+        msg = json_obj['data'].lower()
+        print("msg: ",msg)
+        # rsp = getResponse(msg)
+        rsp = kernel.respond(msg)
+        # print("response: ",rsp)   
+        if rsp[0]=='/':
+            url = 'http://127.0.0.1:5000'+rsp
+            rsp = requests.get(url).text
+            # rsp = redirect(rsp)
+
+        print(rsp)
+        c.execute('INSERT INTO chat VALUES (?,?,?)', (str(datetime.datetime.now()),'Botty', rsp))
         c.commit()
+
+        return rsp
         # return 'Written in db'
 
     @app.route('/chat', methods = ['GET'])

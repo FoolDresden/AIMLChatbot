@@ -1,0 +1,139 @@
+<aiml encoding="UTF-8">
+<!-- basic_chat.aiml -->
+  
+  <!-- <category>
+    <pattern>LEARN AI</pattern>
+    <template><think>xyz.aiml</think></template>
+  </category> -->
+  
+
+  <category>
+    <pattern>HELLO</pattern>
+    <template>
+      Well, hello! I'm Botty!!
+    </template>
+  </category>
+  
+  <category>
+    <pattern>HI</pattern>
+    <template><srai>HELLO</srai></template>
+  </category>
+
+
+
+  <category>
+    <pattern>*</pattern>
+    <template>Dunno</template>
+  </category>
+
+  <category>
+    <pattern>HI MY NAME IS *</pattern>
+    <template><think><set name="name"><star/></set></think>Hello <get name="name"/>, I'm Botty. Here to help you choose subjects and courses</template>
+  </category>
+
+  <category>
+    <pattern>HI I AM *</pattern>
+    <template><srai>HI MY NAME IS <star/></srai></template>
+  </category>
+
+
+
+
+
+
+  <category>
+    <pattern>CHOOSE ELECTIVE</pattern>
+    <template>Sure. What domain are you interested in?</template> 
+  </category>
+
+  <category>
+    <pattern>* CHOOSE ELECTIVE *</pattern>
+    <template><srai>CHOOSE ELECTIVE</srai></template> 
+  </category>
+
+  <category>
+    <pattern>* CHOOSE ELECTIVE</pattern>
+    <template><srai>CHOOSE ELECTIVE</srai></template> 
+  </category>
+
+  <category>
+    <pattern>CHOOSE ELECTIVE *</pattern>
+    <template><srai>CHOOSE ELECTIVE</srai></template>
+  </category>
+
+  <category>
+    <pattern>* CHOOSE ELECTIVES *</pattern>
+    <template><srai>CHOOSE ELECTIVE</srai></template> 
+  </category>
+
+  <category>
+    <pattern>* CHOOSE ELECTIVES</pattern>
+    <template><srai>CHOOSE ELECTIVE</srai></template> 
+  </category>
+
+  <category>
+    <pattern>CHOOSE ELECTIVES *</pattern>
+    <template><srai>CHOOSE ELECTIVE</srai></template>
+  </category>    
+
+
+
+
+  <category>
+    <pattern>WHAT SHOULD I DO</pattern>
+    <template>What is it that you really want to know?</template>
+  </category>
+
+  <category>
+    <pattern>I AM CONFUSED</pattern>
+    <template>What faculty do you like?</template>
+  </category>
+
+  <category>
+    <pattern>I DONT KNOW</pattern>
+    <template>
+      <srai>I AM CONFUSED</srai>
+    </template>
+  </category>
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+    <!-- <category>
+      <pattern>* COMPUTER VISION *</pattern>
+      <template>Try asking Cynthia</template>
+    </category> -->
+
+    <!-- <category>
+        <pattern>SRAIXFAILED</pattern>
+        <template>Big F</template>
+    </category>
+
+    <category>
+        <pattern>ASK * AND *</pattern>
+        <template><star/> says "<sraix server="http://www.pandorabots.com" default="Timeout or max anonymous API calls exceeded"><botid><star/></botid><star index="2"/></sraix>"</template>
+    </category> -->
+
+    <!-- <category>
+        <pattern>SAY *</pattern>
+        <template><sraix server="http://localhost:3000/" default="Ooopsie">home</sraix><star/></template>
+    </category> -->
+
+    <category>
+      <pattern>UR MOM GAY</pattern>
+      <template>No u</template>
+    </category>
+    
+</aiml>
