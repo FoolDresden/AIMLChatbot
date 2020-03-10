@@ -1,0 +1,34 @@
+DROP TABLE IF EXISTS field;
+DROP TABLE IF EXISTS prof;
+DROP TABLE IF EXISTS chat;
+
+-- CREATE TABLE user (
+--   id INTEGER PRIMARY KEY AUTOINCREMENT,
+--   username TEXT UNIQUE NOT NULL,
+--   password TEXT NOT NULL
+-- );
+
+-- CREATE TABLE post (
+--   id INTEGER PRIMARY KEY AUTOINCREMENT,
+--   author_id INTEGER NOT NULL,
+--   created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+--   title TEXT NOT NULL,
+--   body TEXT NOT NULL,
+--   FOREIGN KEY (author_id) REFERENCES user (id)
+-- );
+
+CREATE TABLE field (
+  fieldName TEXT UNIQUE NOT NULL,
+  data TEXT NOT NULL
+);
+
+CREATE TABLE prof (
+  profName TEXT UNIQUE NOT NULL,
+  data TEXT NOT NULL
+);
+
+CREATE TABLE chat(
+	postTime DATETIME NOT NULL,
+	postedBy TEXT NOT NULL,
+	data TEXT NOT NULL
+);

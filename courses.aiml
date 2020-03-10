@@ -1,0 +1,69 @@
+<aiml encoding="UTF-8">
+
+	<category>
+		<pattern>* INTERESTED IN *</pattern>
+		<template>
+			/field/<star index="2"/><think><set name="field"><star index="2"/></set></think>
+		</template>
+	</category>
+
+	<category>
+		<pattern>* WORK IN * FIELD</pattern>
+		<template>
+			/field/<star index="2"/><think><set name="field"><star index="2"/></set></think>
+		</template>
+	</category>
+
+	<category>
+		<pattern>* WORK IN *</pattern>
+		<template>
+			<srai><star index="1"/> WORK IN <star index="2"/> FIELD</srai>
+		</template>
+	</category>
+
+	<category>
+		<pattern>* WORK IN THE FIELD OF *</pattern>
+		<template>
+			/field/<star index="2"/><think><set name="field"><star index="2"/></set></think>
+		</template>
+	</category>
+
+	<category>
+		<pattern>* GET A JOB</pattern>
+		<template>
+			<think><set name="field">null</set></think>/jobTrends
+		</template>
+	</category>
+
+	<category>
+		<pattern>* GET A JOB IN *</pattern>
+		<template>
+			<srai><star index="1"/> INTERESTED IN <star index="2"/></srai><think><set name="field"><star index="2"/></set></think>
+		</template>
+	</category>
+
+	<category>
+		<pattern>* COURSES SHOULD I TAKE</pattern>
+		<template>
+			<condition name="field">
+				<li value="null">What field are you interested in?</li>
+				<li>/field/<get name="field"/></li>
+			</condition>
+		</template>
+	</category>
+
+	<category>
+		<pattern>* SUGGEST A PROF *</pattern>
+		<template>/prof/<get name="field"/></template>
+	</category>
+
+	<category>
+		<pattern>*</pattern>
+		<that>WHAT FIELD ARE YOU INTERESTED IN</that>
+		<template>
+			/field/<star index="1"/><think><set name="field"><star index="1"/></set></think>
+		</template>
+	</category>
+
+
+</aiml>

@@ -10,7 +10,7 @@
   <category>
     <pattern>HELLO</pattern>
     <template>
-      Well, hello!
+      Well, hello! I'm Botty!!
     </template>
   </category>
   
@@ -28,7 +28,7 @@
 
   <category>
     <pattern>HI MY NAME IS *</pattern>
-    <template><think><set name="name"><star/></set></think>Hello <get name="name"/>, I'm here to help you</template>
+    <template><think><set name="name"><star/></set></think>Hello <get name="name"/>, I'm Botty. Here to help you choose subjects and courses</template>
   </category>
 
   <category>
@@ -85,9 +85,17 @@
   </category>
 
   <category>
-    <pattern>I'M CONFUSED</pattern>
-    <template><srai>WHAT SHOULD I DO</srai></template>
+    <pattern>I AM CONFUSED</pattern>
+    <template>What faculty do you like?</template>
   </category>
+
+  <category>
+    <pattern>I DONT KNOW</pattern>
+    <template>
+      <srai>I AM CONFUSED</srai>
+    </template>
+  </category>
+
 
 
 
@@ -123,6 +131,9 @@
         <template><sraix server="http://localhost:3000/" default="Ooopsie">home</sraix><star/></template>
     </category> -->
 
-    
+    <category>
+      <pattern>UR MOM GAY</pattern>
+      <template>No u</template>
+    </category>
     
 </aiml>
