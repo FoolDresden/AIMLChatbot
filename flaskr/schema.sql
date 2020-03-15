@@ -30,5 +30,6 @@ CREATE TABLE prof (
 CREATE TABLE chat(
 	postTime DATETIME NOT NULL,
 	postedBy TEXT NOT NULL,
+	postedTo TEXT NOT NULL,
 	data TEXT NOT NULL
 );

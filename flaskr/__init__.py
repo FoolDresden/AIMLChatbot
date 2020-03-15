@@ -11,7 +11,7 @@ from flask import Flask
 from flask import request
 from flask import redirect
 
-
+from pytrends.request import TrendReq
 
 
 
@@ -21,6 +21,11 @@ def create_app(test_config=None):
     kernel.bootstrap(learnFiles="./flaskr/aiml/botty.aiml")
     kernel.bootstrap(learnFiles="./flaskr/aiml/courses.aiml")
     kernel.bootstrap(learnFiles="./flaskr/aiml/profs.aiml")
+
+
+    # pytrends = TrendReq(hl='en-US', tz=360)
+    # pytrends = TrendReq(hl='en-US', tz=360, timeout=(10,25), proxies=['https://34.203.233.13:80',], retries=2, backoff_factor=0.1)
+    pytrends = TrendReq(hl='en-US', tz=360, timeout=(10,25), retries=2, backoff_factor=0.1)
 
 
     # create and configure the app
@@ -79,7 +84,8 @@ def create_app(test_config=None):
         
         c = db.get_db()
         json_obj = json.loads(json.dumps(request.form))
-        c.execute('INSERT INTO chat VALUES (?,?,?)', (str(datetime.datetime.now()),json_obj['postedBy'], json_obj['data']))
+        print(json_obj)
+        c.execute('INSERT INTO chat VALUES (?,?,?,?)', (str(datetime.datetime.now()),json_obj['postedBy'], 'Botty', json_obj['data']))
         
 
         msg = json_obj['data'].lower()
@@ -93,7 +99,7 @@ def create_app(test_config=None):
             # rsp = redirect(rsp)
 
         print(rsp)
-        c.execute('INSERT INTO chat VALUES (?,?,?)', (str(datetime.datetime.now()),'Botty', rsp))
+        c.execute('INSERT INTO chat VALUES (?,?,?,?)', (str(datetime.datetime.now()),'Botty', json_obj['postedBy'], rsp))
         c.commit()
 
         return rsp
@@ -108,4 +114,18 @@ def create_app(test_config=None):
         # print(chats_obj[0])
         return chats_json
 
+    @app.route('/jobtrends/<path:jobField>')
+    def getJobTrends(jobField):
+        kw_list = []
+        kw_list.append(jobField)
+        print()
+        print()
+        print()
+        print()
+        print(jobField)
+        pytrends.build_payload(kw_list, cat=0, timeframe='today 5-y', geo='', gprop='')
+        # print(pytrends.interest_by_region(resolution='COUNTRY', inc_low_vol=True, inc_geo_code=False))
+        print(pytrends.top_charts(2019, hl='en-US', tz=300, geo='GLOBAL'))
+        print('after that pytrends call')
+        return 'accessed someshizz'
     return app

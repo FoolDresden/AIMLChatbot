@@ -29,14 +29,14 @@
 	</category>
 
 	<category>
-		<pattern>* GET A JOB</pattern>
+		<pattern>* A JOB</pattern>
 		<template>
 			<think><set name="field">null</set></think>/jobTrends
 		</template>
 	</category>
 
 	<category>
-		<pattern>* GET A JOB IN *</pattern>
+		<pattern>* A JOB IN *</pattern>
 		<template>
 			/jobTrends/<star index="2"/><think><set name="field"><star index="2"/></set></think>
 		</template>
