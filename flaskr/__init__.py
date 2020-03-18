@@ -114,18 +114,13 @@ def create_app(test_config=None):
         # print(chats_obj[0])
         return chats_json
 
-    @app.route('/jobtrends/<path:jobField>')
-    def getJobTrends(jobField):
-        kw_list = []
-        kw_list.append(jobField)
-        print()
-        print()
-        print()
-        print()
-        print(jobField)
-        pytrends.build_payload(kw_list, cat=0, timeframe='today 5-y', geo='', gprop='')
-        # print(pytrends.interest_by_region(resolution='COUNTRY', inc_low_vol=True, inc_geo_code=False))
-        print(pytrends.top_charts(2019, hl='en-US', tz=300, geo='GLOBAL'))
-        print('after that pytrends call')
-        return 'accessed someshizz'
+    @app.route('/jobTrends/<path:jobName>')
+    def getJobTrends(jobName):
+        c = db.get_db()
+        response = c.execute('SELECT data FROM jobtrends WHERE jobName = ?', (jobName,)).fetchone()
+        # print(response[0])
+        if response is not None:
+            return response[0]
+        else:
+            return 'I don\'t think I can help you'
     return app

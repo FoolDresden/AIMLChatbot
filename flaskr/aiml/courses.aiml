@@ -31,12 +31,12 @@
 	<category>
 		<pattern>* A JOB</pattern>
 		<template>
-			<think><set name="field">null</set></think>/jobTrends
+			<think><set name="field">null</set></think>/jobTrends/null
 		</template>
 	</category>
 
 	<category>
-		<pattern>* A JOB IN *</pattern>
+		<pattern>* JOB TRENDS IN *</pattern>
 		<template>
 			/jobTrends/<star index="2"/><think><set name="field"><star index="2"/></set></think>
 		</template>
@@ -54,8 +54,22 @@
 	</category>
 
 	<category>
-		<pattern>* SUGGEST A PROF *</pattern>
-		<template>/prof/<get name="field"/></template>
+		<pattern>* SUGGEST A PROF</pattern>
+		<template>
+			<condition name="field">
+				<li value="null">What field are you interested in?</li>
+				<li value="">What field are you interested in?</li>
+				<li>/prof/<get name="field"/></li>
+			</condition>
+		</template>
+	</category>
+
+	<category>
+		<pattern>* SUGGEST A PROF IN *</pattern>
+		<template>
+			<think><set name="field"><star index="1"/></set></think>
+			/prof/<star index="2"/>
+		</template>
 	</category>
 
 	<category>
