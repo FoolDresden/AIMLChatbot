@@ -21,6 +21,7 @@ def create_app(test_config=None):
     kernel.bootstrap(learnFiles="./flaskr/aiml/botty.aiml")
     kernel.bootstrap(learnFiles="./flaskr/aiml/courses.aiml")
     kernel.bootstrap(learnFiles="./flaskr/aiml/profs.aiml")
+    kernel.bootstrap(learnFiles="./flaskr/aiml/jobtrends.aiml")
 
 
     # pytrends = TrendReq(hl='en-US', tz=360)
@@ -114,6 +115,16 @@ def create_app(test_config=None):
         # print(chats_obj[0])
         return chats_json
 
+    @app.route('/chat/<path:user>')
+    def getUserChat(user):
+        # return user
+        c = db.get_db()
+        chats = c.execute('SELECT * FROM chat WHERE postedBy=? OR postedTo=?', (user,user))
+        chats_json = json.dumps( [dict(i) for i in chats] )
+        chats_obj = json.loads(chats_json)
+        # # print(chats_obj[0])
+        return chats_json
+
     @app.route('/jobTrends/<path:jobName>')
     def getJobTrends(jobName):
         c = db.get_db()
@@ -123,4 +134,6 @@ def create_app(test_config=None):
             return response[0]
         else:
             return 'I don\'t think I can help you'
+    
+
     return app

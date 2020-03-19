@@ -28,19 +28,7 @@
 		</template>
 	</category>
 
-	<category>
-		<pattern>* A JOB</pattern>
-		<template>
-			<think><set name="field">null</set></think>/jobTrends/null
-		</template>
-	</category>
-
-	<category>
-		<pattern>* JOB TRENDS IN *</pattern>
-		<template>
-			/jobTrends/<star index="2"/><think><set name="field"><star index="2"/></set></think>
-		</template>
-	</category>
+	
 
 	<category>
 		<pattern>* COURSES SHOULD I TAKE</pattern>
