@@ -17,12 +17,14 @@ from pytrends.request import TrendReq
 
 def create_app(test_config=None):
 
-    kernel = aiml.Kernel()
-    kernel.bootstrap(learnFiles="./flaskr/aiml/botty.aiml")
-    kernel.bootstrap(learnFiles="./flaskr/aiml/courses.aiml")
-    kernel.bootstrap(learnFiles="./flaskr/aiml/profs.aiml")
-    kernel.bootstrap(learnFiles="./flaskr/aiml/jobtrends.aiml")
+    # kernel = aiml.Kernel()
+    # kernel.bootstrap(learnFiles="./flaskr/aiml/botty.aiml")
+    # kernel.bootstrap(learnFiles="./flaskr/aiml/courses.aiml")
+    # kernel.bootstrap(learnFiles="./flaskr/aiml/profs.aiml")
+    # kernel.bootstrap(learnFiles="./flaskr/aiml/jobtrends.aiml")
 
+
+    users = {}
 
     # pytrends = TrendReq(hl='en-US', tz=360)
     # pytrends = TrendReq(hl='en-US', tz=360, timeout=(10,25), proxies=['https://34.203.233.13:80',], retries=2, backoff_factor=0.1)
@@ -91,8 +93,17 @@ def create_app(test_config=None):
 
         msg = json_obj['data'].lower()
         print("msg: ",msg)
+
+        if users.get(json_obj['postedBy'], "NA") == "NA":
+            kernel = aiml.Kernel()
+            kernel.bootstrap(learnFiles="./flaskr/aiml/botty.aiml")
+            kernel.bootstrap(learnFiles="./flaskr/aiml/courses.aiml")
+            kernel.bootstrap(learnFiles="./flaskr/aiml/profs.aiml")
+            kernel.bootstrap(learnFiles="./flaskr/aiml/jobtrends.aiml")
+            users[json_obj['postedBy']] = kernel
+
         # rsp = getResponse(msg)
-        rsp = kernel.respond(msg)
+        rsp = users[json_obj['postedBy']].respond(msg)
         # print("response: ",rsp)   
         if rsp[0]=='/':
             url = 'http://127.0.0.1:5000'+rsp
@@ -115,7 +126,7 @@ def create_app(test_config=None):
         # print(chats_obj[0])
         return chats_json
 
-    @app.route('/chat/<path:user>')
+    @app.route('/chat/<path:user>', methods = ['GET'])
     def getUserChat(user):
         # return user
         c = db.get_db()
