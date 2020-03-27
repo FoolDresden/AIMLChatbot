@@ -6,28 +6,6 @@
 			/field/<star index="2"/><think><set name="field"><star index="2"/></set></think>
 		</template>
 	</category>
-
-	<category>
-		<pattern>* WORK IN * FIELD</pattern>
-		<template>
-			/field/<star index="2"/><think><set name="field"><star index="2"/></set></think>
-		</template>
-	</category>
-
-	<category>
-		<pattern>* WORK IN *</pattern>
-		<template>
-			<srai><star index="1"/> WORK IN <star index="2"/> FIELD</srai>
-		</template>
-	</category>
-
-	<category>
-		<pattern>* WORK IN THE FIELD OF *</pattern>
-		<template>
-			/field/<star index="2"/><think><set name="field"><star index="2"/></set></think>
-		</template>
-	</category>
-
 	
 
 	<category>

@@ -6,10 +6,43 @@
 		</template>
 	</category>
 
+
+	<category>
+		<pattern>* JOB TRENDS</pattern>
+		<template>/jobTrends/null</template>
+	</category>
+
 	<category>
 		<pattern>* JOB TRENDS IN *</pattern>
 		<template>
 			/jobTrends/<star index="2"/><think><set name="field"><star index="2"/></set></think>
 		</template>
 	</category>
+
+	<category>
+		<pattern>* WORK IN *</pattern>
+		<template>
+			<think><set name="field"><star index="2"/></set></think>
+			<!-- <srai><star index="1"/> WORK IN <star index="2"/> FIELD</srai> -->
+			/jobTrends/<star index="2"/>
+		</template>
+	</category>
+
+	<category>
+		<pattern>* JOB IN *</pattern>
+		<template>
+			<think><set name="field"><star index="2"/></set></think>
+			<!-- <srai><star index="1"/> WORK IN <star index="2"/> FIELD</srai> -->
+			/jobTrends/<star index="2"/>
+		</template>
+	</category>
+
+	<category>
+		<pattern>* WORK IN THE FIELD OF *</pattern>
+		<template>
+			/jobTrends/<star index="2"/><think><set name="field"><star index="2"/></set></think>
+		</template>
+	</category>
+
+
 </aiml>

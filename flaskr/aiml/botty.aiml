@@ -23,7 +23,7 @@
 
   <category>
     <pattern>*</pattern>
-    <template>Dunno</template>
+    <template>I did not get that</template>
   </category>
 
   <category>
@@ -36,49 +36,6 @@
     <template><srai>HI MY NAME IS <star/></srai></template>
   </category>
 
-
-
-
-
-
-  <category>
-    <pattern>CHOOSE ELECTIVE</pattern>
-    <template>Sure. What domain are you interested in?</template> 
-  </category>
-
-  <category>
-    <pattern>* CHOOSE ELECTIVE *</pattern>
-    <template><srai>CHOOSE ELECTIVE</srai></template> 
-  </category>
-
-  <category>
-    <pattern>* CHOOSE ELECTIVE</pattern>
-    <template><srai>CHOOSE ELECTIVE</srai></template> 
-  </category>
-
-  <category>
-    <pattern>CHOOSE ELECTIVE *</pattern>
-    <template><srai>CHOOSE ELECTIVE</srai></template>
-  </category>
-
-  <category>
-    <pattern>* CHOOSE ELECTIVES *</pattern>
-    <template><srai>CHOOSE ELECTIVE</srai></template> 
-  </category>
-
-  <category>
-    <pattern>* CHOOSE ELECTIVES</pattern>
-    <template><srai>CHOOSE ELECTIVE</srai></template> 
-  </category>
-
-  <category>
-    <pattern>CHOOSE ELECTIVES *</pattern>
-    <template><srai>CHOOSE ELECTIVE</srai></template>
-  </category>    
-
-
-
-
   <category>
     <pattern>WHAT SHOULD I DO</pattern>
     <template>What is it that you really want to know?</template>
@@ -90,9 +47,93 @@
   </category>
 
   <category>
-    <pattern>I DONT KNOW</pattern>
+    <pattern>I WANT SOME HELP</pattern>
+    <template>Sure. I can recommend courses, profs and tell about job trends</template>
+  </category>
+
+  <category>
+    <pattern>WHAT CAN YOU DO</pattern>
+    <template>Sure. I can recommend courses, profs and tell about job trends</template>
+  </category>
+
+  <category>
+    <pattern> CAN YOU HELP ME</pattern>
     <template>
-      <srai>I AM CONFUSED</srai>
+      <srai>I WANT SOME HELP</srai>
+    </template>
+  </category>
+
+  <category>
+    <pattern>WHAT CAN YOU DO</pattern>
+    <template>
+      <srai>I WANT SOME HELP</srai>
+    </template>
+  </category>
+
+  <category>
+    <pattern>I WANT TO KNOW ABOUT *</pattern>
+    <!-- <that>I CAN RECOMMEND COURSES PROFS AND TELL ABOUT JOB TRENDS</that> -->
+    <template>
+      <think><set name= "recField"><star index="1"/></set></think>
+<!--       Say hi: <get name="recField"/>  -->
+      <condition name= "recField">
+        <li value = "courses">What field are you interested in?</li>
+        <li value = "profs">What profs are you interested in?</li>
+        <li value = "job trends">/jobtrends/null</li>
+        <li> Sorry can't help you with that :( </li>
+      </condition>
+    </template>
+  </category>
+
+  <category>
+    <pattern>*</pattern>
+    <that>WHAT FIELD ARE YOU INTERESTED IN</that>
+    <template>
+      <think><set name = "field"><star index="1"/></set></think>
+      /field/<star index="1"/>
+    </template>
+  </category>
+
+  <category>
+    <pattern>*</pattern>
+    <that>WHAT PROFS ARE YOU INTERESTED IN</that>
+    <template>
+      /prof/<star index="1"/>
+    </template>
+  </category>
+
+  <category>
+    <pattern>CAN YOU RECOMMEND A PROF</pattern>
+    <template>
+      <srai>CAN YOU SUGGEST A PROF</srai>
+    </template>
+  </category>
+
+  <category>
+    <pattern>* SUGGEST COURSES</pattern>
+    <template>
+      <srai>WHAT COURSES SHOULD I TAKE</srai>
+    </template>
+  </category>
+
+  <category>
+    <pattern>* RECOMMEND SOME COURSES</pattern>
+    <template>
+      <srai>WHAT COURSES SHOULD I TAKE</srai>
+    </template>
+  </category>
+
+  <category>
+    <pattern>* SOME COURSES FOR *</pattern>
+    <template>
+      /field/<star index="2"/>
+    </template>
+  </category>
+
+  <category>
+    <pattern>* SOME PROFS FOR *</pattern>
+    <template>
+      /prof/<star index="2"/>
     </template>
   </category>
 
@@ -104,36 +145,26 @@
 
 
 
-    
 
 
 
 
 
 
-    <!-- <category>
-      <pattern>* COMPUTER VISION *</pattern>
-      <template>Try asking Cynthia</template>
-    </category> -->
 
-    <!-- <category>
-        <pattern>SRAIXFAILED</pattern>
-        <template>Big F</template>
-    </category>
 
-    <category>
-        <pattern>ASK * AND *</pattern>
-        <template><star/> says "<sraix server="http://www.pandorabots.com" default="Timeout or max anonymous API calls exceeded"><botid><star/></botid><star index="2"/></sraix>"</template>
-    </category> -->
 
-    <!-- <category>
-        <pattern>SAY *</pattern>
-        <template><sraix server="http://localhost:3000/" default="Ooopsie">home</sraix><star/></template>
-    </category> -->
 
-    <category>
-      <pattern>UR MOM GAY</pattern>
-      <template>No u</template>
-    </category>
+
+
+
+
+
+
+
+  <category>
+    <pattern>LALASASAX</pattern>
+    <template>You got me!! Hehehehe</template>
+  </category>
     
 </aiml>

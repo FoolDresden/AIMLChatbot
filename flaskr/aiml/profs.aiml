@@ -38,4 +38,10 @@
     <template>/prof/<star index="1"/></template>
   </category>
 
+
+   <category>
+    <pattern>PROF *</pattern>
+    <that>WHAT PROFS ARE YOU INTERESTED IN</that>    
+    <template>/prof/<star index="1"/></template>
+  </category>
 </aiml>

@@ -69,7 +69,7 @@ def create_app(test_config=None):
         if response is not None:
             return response[0]
         else:
-            return 'I don\'t think I can help you'
+            return 'I do not know about that field. Sorry.'
 
     @app.route('/prof/<path:profName>')
     def searchProf(profName):
@@ -79,7 +79,7 @@ def create_app(test_config=None):
         if response is not None:
             return response[0]
         else:
-            return 'I don\'t think I can help you'
+            return 'I do not know about that prof. Sorry.'
 
 
     @app.route('/chat', methods = ['POST'])
@@ -144,7 +144,7 @@ def create_app(test_config=None):
         if response is not None:
             return response[0]
         else:
-            return 'I don\'t think I can help you'
+            return 'I do not know about that job. Sorry.'
     
 
     return app
