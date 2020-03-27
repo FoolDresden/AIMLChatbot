@@ -15,6 +15,6 @@ Please follow the following instructions in order to deploy the flask app (if it
 
 # Calling the API	
 The API has one main endpoint ```/chat``` and will be used to interact with Botty
-1. GET ```/chat``` allows one to see all the chats 
-2. POST ```/chat/<chat here>``` allows one to post to the server and receive a response
-
+1. GET ```/chat/<username>``` allows one to see the chats of a user
+2. GET ```/chat``` allows one to see all chats ever
+3. POST ```/chat``` passing ```{postedBy: "username", data: "chats here please"}``` with type as URLencoded form data
