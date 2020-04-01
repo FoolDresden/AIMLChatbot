@@ -11,10 +11,18 @@
     </template>
   </category>
 
+
   <category>
     <pattern>* WORK UNDER PROF *</pattern>
     <template>
       <srai><star index="1"/> WORK UNDER <star index="2"/></srai>
+    </template>
+  </category>
+
+  <category>
+    <pattern>* WORK UNDER A PROF IN *</pattern>
+    <template>
+      /prof/<star index="2"/><think><set name="field"><star index="2"/></set></think>
     </template>
   </category>
 

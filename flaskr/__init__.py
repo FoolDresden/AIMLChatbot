@@ -11,7 +11,6 @@ from flask import Flask
 from flask import request
 from flask import redirect
 
-from pytrends.request import TrendReq
 
 
 
@@ -25,10 +24,6 @@ def create_app(test_config=None):
 
 
     users = {}
-
-    # pytrends = TrendReq(hl='en-US', tz=360)
-    # pytrends = TrendReq(hl='en-US', tz=360, timeout=(10,25), proxies=['https://34.203.233.13:80',], retries=2, backoff_factor=0.1)
-    pytrends = TrendReq(hl='en-US', tz=360, timeout=(10,25), retries=2, backoff_factor=0.1)
 
 
     # create and configure the app
