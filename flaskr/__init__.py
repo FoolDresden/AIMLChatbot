@@ -5,7 +5,7 @@ import sys, glob
 import aiml
 import requests
 import sqlite3
-
+import re
 
 from flask import Flask
 from flask import request
@@ -133,13 +133,42 @@ def create_app(test_config=None):
 
     @app.route('/jobTrends/<path:jobName>')
     def getJobTrends(jobName):
+        # print("Hi")
         c = db.get_db()
         response = c.execute('SELECT data FROM jobtrends WHERE jobName = ?', (jobName,)).fetchone()
         # print(response[0])
+        url = "https://jobs.github.com/positions.json?description="+jobName
+
+        ans = ""
         if response is not None:
-            return response[0]
+            ans = response[0]
         else:
-            return 'I do not know about that job. Sorry.'
-    
+            ans = 'I do not know about that job on my own. Sorry.'
+
+
+        jobs = requests.get(url).text
+        json_obj = json.loads(jobs)
+        # print(json_obj[0]['url'])
+
+        TAG_RE = re.compile(r'<[^>]+>')
+        
+        
+        cnt = 0
+        joblinks = ""
+        # print(json_obj[0])
+        for obj in json_obj:
+            # print(obj['url'])
+            # print("Hi")
+            if cnt>=5:
+                break
+            cnt = cnt+1
+            joblinks = joblinks+"\nTitle: "+obj['title']+"\nCompany: "+obj['company']+"\nUrl: "+obj['url']+"\n\n"
+
+        if joblinks == "":
+            return ans
+        else:
+            joblinks = '\nHere are some jobs I found online:\n'+joblinks
+            ans = ans+joblinks
+            return ans
 
     return app
