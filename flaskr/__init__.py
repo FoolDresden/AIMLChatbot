@@ -146,6 +146,7 @@ def create_app(test_config=None):
             ans = 'I do not know about that job on my own. Sorry.'
 
 
+        # print(requests.get(url))
         jobs = requests.get(url).text
         json_obj = json.loads(jobs)
         # print(json_obj[0]['url'])
@@ -167,7 +168,7 @@ def create_app(test_config=None):
         if joblinks == "":
             return ans
         else:
-            joblinks = '\nHere are some jobs I found online:\n'+joblinks
+            joblinks = '\nHere are some jobs I found online to help you out:\n'+joblinks
             ans = ans+joblinks
             return ans
 

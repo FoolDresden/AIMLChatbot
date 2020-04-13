@@ -1,0 +1,40 @@
+Dialog 1:
+->I want some help
+->I want to know about courses/profs/job trends
+-><insert course/prof/job name>
+->WHat are the job trends
+->Can you recommend a prof
+
+Dialog 2:
+->What are the job trends in <fieldname>
+->Can you recommend some courses
+->Can you recommend a prof
+
+Dialog 2:
+->I am interested in <insert field name>
+->Can you suggest a prof
+
+Dialog 3:
+->What courses should I take
+->Can you suggest a prof
+
+Dialog 4:
+->What can you do
+//Follows same as Dialog 1
+
+Dialog 5:
+->Can you help me
+//Follows same as Dialog 1
+
+
+Miscellaneous:
+->I want a job
+->I want to work in <insert field>
+->I want a job in <insert field>
+->I want to work under prof <insert prof name>
+->I want to work under a prof in <insert field>
+->I am interested in <insert field>
+->Can you recommend a profs in <insert field>
+->Can you recommend some courses for <insert field>
+->Can you recommend some profs for <insert field>
+

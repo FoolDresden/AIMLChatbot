@@ -9,7 +9,13 @@
 
 	<category>
 		<pattern>* JOB TRENDS</pattern>
-		<template>/jobTrends/null</template>
+		<template>
+			<condition name="field">
+				<li value="null">/jobTrends/null</li>
+				<li value="">/jobTrends/null</li>
+				<li>/jobTrends/<get name="field"/></li>
+			</condition>
+		</template>
 	</category>
 
 	<category>
