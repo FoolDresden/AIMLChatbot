@@ -79,7 +79,7 @@
       <condition name= "recField">
         <li value = "courses">What field are you interested in?</li>
         <li value = "profs">What profs are you interested in?</li>
-        <li value = "job trends">/jobtrends/null</li>
+        <li value = "job trends">/jobTrends/null</li>
         <li> Sorry can't help you with that :( </li>
       </condition>
     </template>
