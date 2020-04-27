@@ -104,6 +104,11 @@ int main()
 {
 	int r,c,obs;
 	cin>>r>>c>>obs;
+	if(obs>r*c-2)
+	{
+		cout<<"Not possible. Please choose proper values";
+		return 0;
+	}
 	vector<vector<char>> grid=generateGrid(r,c);
 	vector<vector<char>> vis=grid;
 	grid=generateObstacles(grid,obs);
